@@ -7,6 +7,8 @@ import axios from 'axios';
 
 import Navbar from "../../components/Navbar/Navbar"
 
+import qrcode from '../../assets/download.png'
+
 export default function Actions() {
 
     const [alunos, setAlunos] = useState([]);
@@ -54,7 +56,7 @@ export default function Actions() {
                             <strong>QR Code da Chamada</strong>
 
                             <div className={Styles.qr}>
-                                <img src="./image/frame.png" alt="" />
+                                <img src={qrcode} alt="" />
                             </div>
 
                             <p>Escaneie o QR Code ou acesse:</p>
