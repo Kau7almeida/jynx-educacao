@@ -130,4 +130,8 @@ main {
     }
 }
 
-@media (max-width: 680px) {}
+@media (max-width: 420px) {
+  main .container .content { padding: 12px; }
+  main .container .content .box { width: 100%; }
+  main .container .content .box .form_control { padding: 0 12px; }
+}

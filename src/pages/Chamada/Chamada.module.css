@@ -1,4 +1,4 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -56,7 +56,7 @@ main {
                 justify-content: space-between;
                 align-items: center;
 
-                
+
 
                 button {
                     border: none;
@@ -92,12 +92,12 @@ main {
                     justify-content: center;
 
                     img {
-                        width: 70%;
+                        width: 90%;
                         height: 100%;
                     }
                 }
 
-                .buttons{
+                .buttons {
                     display: flex;
                     gap: 10px;
                 }
@@ -144,11 +144,11 @@ main {
                             justify-content: space-around;
                             align-items: center;
 
-                            p{
+                            p {
                                 width: 33%;
                             }
 
-                            svg{
+                            svg {
                                 width: 33%;
                                 cursor: pointer;
                             }
@@ -161,4 +161,18 @@ main {
             }
         }
     }
+}
+
+@media (max-width: 1512px) {
+
+    .qrcode .qr {
+        width: 100px;
+        height: auto;
+    }
+
+    .qrcode .qr img {
+        height: auto;
+        width: 100% !important;
+    }
+
 }
