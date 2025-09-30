@@ -3,6 +3,8 @@ import Styles from './Home.module.css'
 import Navbar from "../../components/Navbar/Navbar"
 import Actions from '../../components/Actions/Actions';
 
+import { useNavigate } from 'react-router-dom';
+
 export default function Home() {
 
     let data = new Date();
@@ -66,6 +68,8 @@ export default function Home() {
         minutos = '0' + minutos;
     }
 
+    const navigate = useNavigate();
+    
     return (
         <>
             <Navbar />
@@ -112,7 +116,8 @@ export default function Home() {
 
                             <Actions
                                 onClick={() => {
-                                    window.location.href = '/chamada';
+                                    // window.location.href = '/chamada';
+                                    navigate('/chamada')
                                 }}
                                 icon='https://img.icons8.com/forma-light/25/228BE6/checked-user-male.png'
                                 title='Iniciar Chamada'
@@ -121,8 +126,9 @@ export default function Home() {
 
                             <Actions
                                 onClick={() => {
-                                    window.location.href = '/';
+                                    // window.location.href = '/';
                                     // window.location.href = '/notebooks';
+                                    navigate('/')
                                 }}
                                 icon='https://img.icons8.com/fluency-systems-regular/20/FAB005/laptop--v1.png'
                                 title='Registrar Notebook'
