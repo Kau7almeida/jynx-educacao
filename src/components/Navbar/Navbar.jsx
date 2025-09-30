@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 export default function Navbar() {
     return (
         <header>
-            <div class={Styles.container}>
+            <div className={Styles.container}>
                 <div className={Styles.title_header}>
                     <p className={Styles.title_jynx}>Universidade JYNX</p>
                     <p className={Styles.barra}>|</p>
@@ -13,7 +13,7 @@ export default function Navbar() {
                 </div>
                 <nav>
                     <Link to={'/'}>Dashboard</Link>
-                    <Link to={'/'}>Chamada</Link>
+                    <Link to={'/chamada'}>Chamada</Link>
                     <Link to={'/'}>Notebooks</Link>
                 </nav>
             </div>

@@ -112,8 +112,7 @@ export default function Home() {
 
                             <Actions
                                 onClick={() => {
-                                    window.location.href = '/';
-                                    // window.location.href = '/chamada';
+                                    window.location.href = '/chamada';
                                 }}
                                 icon='https://img.icons8.com/forma-light/25/228BE6/checked-user-male.png'
                                 title='Iniciar Chamada'
