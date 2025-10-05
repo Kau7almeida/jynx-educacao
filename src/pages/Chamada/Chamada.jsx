@@ -2,7 +2,7 @@ import Styles from './Chamada.module.css';
 
 import { Link } from 'react-router-dom';
 
-import { useState, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 
 import Navbar from "../../components/Navbar/Navbar"
@@ -26,10 +26,15 @@ export default function Actions() {
     }
 
     const deleteCheckin = async (id) => {
-        let endpoint = `https://universidade-jynx-back.onrender.com/call/deleteCalls/${id}`
+        id.currentTarget.id;
+        let endpoint = `https://universidade-jynx-back.onrender.com/call/deleteCalls/${id.currentTarget.id}`
         await axios.delete(endpoint);
         getAllCheckin();
     }
+
+    useEffect(() => {
+        getAllCheckin();
+    }, [])
 
     useEffect(() => {
         getAllCheckin();
@@ -64,7 +69,7 @@ export default function Actions() {
                             <Link to={'/checkin'} target='_blank'>Acesse a chamada da Universidade JYNX</Link>
 
                             <div className={Styles.buttons}>
-                                <button id="btnExport">Exportar Presenças</button>
+                                {/* <button id="btnExport">Exportar Presenças</button> */}
                                 <button className={Styles.clear} onClick={limparCheckin}>Limpar chamada</button>
                             </div>
                         </div>
@@ -85,10 +90,10 @@ export default function Actions() {
                                     {alunos.length === 0 ? (<p>Nenhum aluno presente</p>) : (
                                         alunos.map(aluno => {
                                             return (
-                                                <div className={Styles.tr}>
+                                                <div className={Styles.tr} key={aluno.id}>
                                                     <p>{aluno.turma}</p>
                                                     <p>{aluno.name}</p>
-                                                    <svg onClick={deleteCheckin} xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20"
+                                                    <svg id={aluno.id} onClick={deleteCheckin} xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20"
                                                         viewBox="0,0,256,256">
                                                         <g fill="#fa5252" fill-rule="nonzero" stroke="none" stroke-width="1"
                                                             stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10"
