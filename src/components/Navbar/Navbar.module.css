@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Tektur:wght@400..900&display=swap');
+
+*{
+    font-family: "Tektur", sans-serif;
+}
+
 header {
     background-color: #E46307;
     height: 100px;
