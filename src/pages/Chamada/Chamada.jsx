@@ -2,7 +2,9 @@ import Styles from './Chamada.module.css';
 
 import { Link } from 'react-router-dom';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import axios from 'axios';
 
 import Navbar from "../../components/Navbar/Navbar"
@@ -12,6 +14,22 @@ import qrcode from '../../assets/download.png'
 export default function Actions() {
 
     const [alunos, setAlunos] = useState([]);
+
+    const [userLogado, setUserLogado] = useState({})
+
+    let meuStorage = localStorage;
+    const user = JSON.parse(meuStorage.getItem("user"));
+
+    const navigate = useNavigate();
+
+    const capturaUser = () => {
+
+        if(!user){
+            navigate('/')
+        }
+
+        setUserLogado(user)
+    }
 
     const getAllCheckin = async () => {
         let endpoint = 'https://universidade-jynx-back.onrender.com/call/getAllCall';
@@ -33,6 +51,7 @@ export default function Actions() {
     }
 
     useEffect(() => {
+        capturaUser()
         getAllCheckin();
     }, [])
 
@@ -42,6 +61,7 @@ export default function Actions() {
 
     return (
         <>
+        
             <Navbar />
 
             <main>

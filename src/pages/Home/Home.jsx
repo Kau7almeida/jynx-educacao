@@ -5,7 +5,27 @@ import Actions from '../../components/Actions/Actions';
 
 import { useNavigate } from 'react-router-dom';
 
+import { useState, useEffect } from 'react';
+
 export default function Home() {
+
+    const [userLogado, setUserLogado] = useState({})
+
+    let meuStorage = localStorage;
+    const user = JSON.parse(meuStorage.getItem("user"));
+
+    const capturaUser = () => {
+
+        if(!user){
+            navigate('/')
+        }
+
+        setUserLogado(user)
+    }
+
+    useEffect(() => {
+        capturaUser()
+    }, [])
 
     let data = new Date();
     let diaSemana = data.getDay();
@@ -69,7 +89,7 @@ export default function Home() {
     }
 
     const navigate = useNavigate();
-    
+
     return (
         <>
             <Navbar />
@@ -80,7 +100,7 @@ export default function Home() {
 
                         <h1>Dashboard</h1>
                         <div className={Styles.msg_hours}>
-                            <p id='boasVindas'>Bem vindo(a), Instrutor - {nomeDiaSemana}, {dia} de {nomeMes} de {ano}</p>
+                            <p id='boasVindas'>Bem vindo(a), {userLogado.name} - {nomeDiaSemana}, {dia} de {nomeMes} de {ano}</p>
                             <div className={Styles.flex_hours}>
                                 <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20"
                                     viewBox="0,0,256,256">
@@ -126,9 +146,7 @@ export default function Home() {
 
                             <Actions
                                 onClick={() => {
-                                    // window.location.href = '/';
-                                    // window.location.href = '/notebooks';
-                                    navigate('/')
+                                    navigate('/home')
                                 }}
                                 icon='https://img.icons8.com/fluency-systems-regular/20/FAB005/laptop--v1.png'
                                 title='Registrar Notebook'
