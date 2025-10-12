@@ -11,7 +11,7 @@ export default function Login() {
 
         let login = document.querySelector('#txt_login').value
         let password = document.querySelector('#txt_password').value
-
+        
         let obj = {
             email: login,
             password: password

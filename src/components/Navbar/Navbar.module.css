@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Tektur:wght@400..900&display=swap');
 
-*{
+* {
     font-family: "Tektur", sans-serif;
 }
 
@@ -33,20 +33,16 @@ header {
             align-items: center;
             gap: 16px;
 
-            button {
+            .btnLogout {
                 background-color: white;
-                color: #E46307;
-                width: 100px;
-                height: 30px;
                 border: none;
-                border-radius: 5px;
+                padding: 5px 20px;
                 cursor: pointer;
+                border-radius: 2px;
             }
 
-            button:hover {
-                background-color: #353535;
-                border: solid 1px white;
-                transition: 0.2s;
+            .btnLogout:hover {
+                background-color: rgb(210, 210, 210);
             }
 
             a {

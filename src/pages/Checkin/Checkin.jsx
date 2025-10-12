@@ -6,6 +6,14 @@ import axios from 'axios';
 
 export default function Checkin() {
 
+    const [alunos, setAlunos] = useState([]);
+
+    const getAllCheckin = async () => {
+        let endpoint = 'https://universidade-jynx-back.onrender.com/call/getAllCall';
+        let resp = await axios.get(endpoint);
+        setAlunos(resp.data);
+    }
+
     const [finalizado, setFinalizado] = useState(false);
     const [turmas, setTurmas] = useState([]);
 
@@ -36,7 +44,14 @@ export default function Checkin() {
             name: aluno,
             classe_id: turma
         }
-        
+
+        let jaRealizados = alunos.filter(item => item.name.toLowerCase() == newRegister.name.toLowerCase());
+
+        if(jaRealizados.length > 0){
+            alert('Você já realizou a chamada');
+            return
+        }
+
         let resp = await axios.post(endpoint, newRegister)
 
         finalizar()
@@ -44,8 +59,13 @@ export default function Checkin() {
     }
 
     useEffect(() => {
+        getAllCheckin()
         buscarTurmas();
     }, [])
+
+    useEffect(() => {
+        getAllCheckin();
+    }, [alunos])
 
     return (
         <>
@@ -88,7 +108,7 @@ export default function Checkin() {
                                             alt="user" />
                                         <label for="">Seu nome completo</label>
                                     </div>
-                                    <input type="text" className={Styles.txt_aluno} id='txt_aluno'/>
+                                    <input type="text" className={Styles.txt_aluno} id='txt_aluno' />
                                 </div>
 
                                 <div className={Styles.btn}>
