@@ -51,13 +51,13 @@ export default function Login() {
 
                         <div className={Styles.form_group}>
                             <label for="">Login</label>
-                            <input type="text" name="txt_login" id="txt_login" placeholder="Digite seu login" />
+                            <input type="email" name="txt_login" id="txt_login" placeholder="Digite seu login" />
                         </div>
 
                         <div className={Styles.form_group}>
                             <label for="">Senha</label>
                             <div className={Styles.password}>
-                                <input type="text" name="txt_password" id="txt_password" placeholder="Digite sua senha" className={Styles.txt_password} />
+                                <input type="password" name="txt_password" id="txt_password" placeholder="Digite sua senha" className={Styles.txt_password} />
                             </div>
                         </div>
 
