@@ -11,10 +11,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(to bottom, #ff7300, #a64500);
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url('../../assets/background.jpeg') center/cover no-repeat;
 }
 
-.container{
+.container {
     background-color: white;
     width: 500px;
     height: 600px;
@@ -25,17 +27,30 @@
     align-items: center;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
-    .form_control{
+    backdrop-filter: blur(6px);
+    background-color: rgba(255, 255, 255, 0.05);
+    border: solid 1px #da6504;
+
+    h1 {
+        color: white;
+    }
+
+    label {
+        color: white;
+    }
+
+    .form_control {
         width: 80%;
         display: flex;
         flex-direction: column;
         gap: 30px;
 
-        .form_group{
+        .form_group {
             display: flex;
             flex-direction: column;
             gap: 5px;
-            input{
+
+            input {
                 border: solid 0.5px;
                 height: 40px;
                 border-radius: 5px;
@@ -45,21 +60,21 @@
 
     }
 
-    .password{
+    .password {
         display: flex;
         align-items: center;
         justify-content: space-between;
 
-        i{
+        i {
             cursor: pointer;
         }
     }
 
-    .txt_password{
+    .txt_password {
         width: 100%;
     }
 
-    button{
+    button {
         width: 80%;
         height: 50px;
         background-color: #ff7300;
@@ -69,8 +84,28 @@
         border: none;
     }
 
-    button:hover{
+    button:hover {
         background-color: #da6504;
     }
 
+}
+
+.container {
+    border: 2.5px solid #da6504;
+    animation: borderPulse 3.5s infinite alternate;
+}
+
+@keyframes borderPulse {
+    0% {
+        border-color: #da6504;
+    }
+
+    50% {
+        border-color: #fff;
+
+    }
+
+    100% {
+        border-color: black;
+    }
 }

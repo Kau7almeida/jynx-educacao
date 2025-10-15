@@ -11,7 +11,7 @@ export default function Login() {
 
         let login = document.querySelector('#txt_login').value
         let password = document.querySelector('#txt_password').value
-        
+
         let obj = {
             email: login,
             password: password
@@ -22,7 +22,7 @@ export default function Login() {
         let resp = await axios.post(endpoint, obj)
         let data = resp.data
 
-        if(data == 'nao foi possivel encontrar usuário'){
+        if (data == 'nao foi possivel encontrar usuário') {
             alert('Usuário inválido')
             return
         }
@@ -42,7 +42,6 @@ export default function Login() {
     return (
         <>
             <div className={Styles.body}>
-
                 <div className={Styles.container}>
 
                     <h1>Universidade JYNX</h1>
