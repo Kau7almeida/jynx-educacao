@@ -92,7 +92,7 @@
 
 .container {
     border: 2.5px solid #da6504;
-    animation: borderPulse 3.5s infinite alternate;
+    animation: borderPulse 2s infinite alternate;
 }
 
 @keyframes borderPulse {
@@ -100,12 +100,8 @@
         border-color: #da6504;
     }
 
-    50% {
+    100% {
         border-color: #fff;
 
-    }
-
-    100% {
-        border-color: black;
     }
 }

@@ -44,7 +44,7 @@ export default function Login() {
             <div className={Styles.body}>
                 <div className={Styles.container}>
 
-                    <h1>Universidade JYNX</h1>
+                    <h1>JYNX Educação</h1>
 
                     <div className={Styles.form_control}>
 

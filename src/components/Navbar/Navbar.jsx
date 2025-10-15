@@ -17,7 +17,7 @@ export default function Navbar() {
         <header>
             <div className={Styles.container}>
                 <div className={Styles.title_header}>
-                    <p className={Styles.title_jynx}>Universidade JYNX</p>
+                    <p className={Styles.title_jynx}>JYNX Educação</p>
                     <p className={Styles.barra}>|</p>
                     <p className={Styles.cargo}>Instrutor</p>
                 </div>
