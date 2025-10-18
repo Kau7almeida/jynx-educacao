@@ -84,7 +84,7 @@ export default function Actions() {
 
         // Dados a partir do estado (sem DOM)
         for (const a of alunos ?? []) {
-            linhas.push([a?.turma ?? '', a?.name ?? '']);
+            linhas.push([turmaSelect ?? '', a?.name ?? '']);
         }
 
         if (linhas.length === 1) {
@@ -149,6 +149,7 @@ export default function Actions() {
 
                                     <div className={Styles.buttons}>
                                         <button onClick={selecionarTurma} className={Styles.initCall}>Iniciar</button>
+                                        <button id="btnExport" onClick={exportExcel} className={Styles.export}>Exportar</button>
                                         <button className={Styles.clear} onClick={limparCheckin}>Limpar</button>
                                     </div>
 

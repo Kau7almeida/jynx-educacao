@@ -95,6 +95,14 @@ main {
                     .clear:hover {
                         background-color: rgb(255, 55, 55);
                     }
+
+                    .export{
+                        background-color: rgb(10, 150, 10);
+                    }
+
+                    .export:hover{
+                        background-color: rgb(12, 172, 12);
+                    }
                 }
 
 
