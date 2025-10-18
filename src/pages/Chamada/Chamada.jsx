@@ -63,7 +63,10 @@ export default function Actions() {
     const selecionarTurma = () => {
         let value = document.querySelector('#slc_turma').value
         setTurmaSelecionada(value)
+        meuStorage.setItem('turmaSelecionada', value)
     }
+
+    let turmaSelect = meuStorage.getItem("turmaSelecionada")
 
     useEffect(() => {
         capturaUser()
@@ -143,9 +146,15 @@ export default function Actions() {
                                         ))}
                                     </select>
 
-                                    <button onClick={selecionarTurma}>Iniciar Chamada</button>
 
-                                </div> : ''
+                                    <div className={Styles.buttons}>
+                                        <button onClick={selecionarTurma} className={Styles.initCall}>Iniciar</button>
+                                        <button className={Styles.clear} onClick={limparCheckin}>Limpar</button>
+                                    </div>
+
+                                </div>
+
+                                : ''
 
                         }
 
@@ -160,8 +169,8 @@ export default function Actions() {
                                         <img src={qrcode} alt="" />
                                     </div>
 
-                                    {/* <p>Escaneie o QR Code ou acesse:</p> */}
-                                    {/* <Link to={'/checkin'} target='_blank'>Acesse a chamada da Universidade JYNX</Link> */}
+                                    <p>Escaneie o QR Code ou acesse:</p>
+                                    <Link to={'/checkin'} target='_blank'>Acesse a chamada da Universidade JYNX</Link>
 
                                     <div className={Styles.buttons}>
                                         <button id="btnExport" onClick={exportExcel}>Exportar Presenças</button>
@@ -188,7 +197,7 @@ export default function Actions() {
                                         alunos.map(aluno => {
                                             return (
                                                 <div className={Styles.tr} key={aluno.id}>
-                                                    <p>{turmaSelecionada}</p>
+                                                    <p>{turmaSelect}</p>
                                                     <p>{aluno.name}</p>
                                                     <svg id={aluno.id} onClick={deleteCheckin} xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20"
                                                         viewBox="0,0,256,256">

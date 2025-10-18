@@ -63,23 +63,43 @@ main {
                 }
 
                 button {
-                        border: none;
+                    border: none;
+                    padding: 15px 15px;
+                    width: 40%;
+                    border-radius: 5px;
+                    height: 30px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 10px;
+                    color: white;
+                    cursor: pointer;
+                }
+
+                .buttons {
+                    display: flex;
+                    gap: 10px;
+
+                    .initCall {
                         background-color: #E46307;
-                        padding: 7px;
-                        width: 30%;
-                        border-radius: 5px;
-                        height: 30px;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        gap: 10px;
-                        color: white;
-                        cursor: pointer;
                     }
 
-                    button:hover {
+                    .initCall:hover {
                         background-color: #e6721f;
                     }
+
+                    .clear {
+                        background-color: red;
+                    }
+
+                    .clear:hover {
+                        background-color: rgb(255, 55, 55);
+                    }
+                }
+
+
+
+
             }
 
             .qrcode {
