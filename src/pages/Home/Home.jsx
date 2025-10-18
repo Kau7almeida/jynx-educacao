@@ -3,6 +3,7 @@ import Styles from './Home.module.css'
 import Navbar from "../../components/Navbar/Navbar"
 import Actions from '../../components/Actions/Actions';
 
+
 import { useNavigate } from 'react-router-dom';
 
 import { useState, useEffect } from 'react';
@@ -144,14 +145,14 @@ export default function Home() {
                                 description='Gerar QR Code para presença'
                             />
 
-                            <Actions
+                            {/* <Actions
                                 onClick={() => {
                                     navigate('/home')
                                 }}
                                 icon='https://img.icons8.com/fluency-systems-regular/20/FAB005/laptop--v1.png'
                                 title='Registrar Notebook'
                                 description='Alugar ou devolver'
-                            />
+                            /> */}
 
                         </div>
                     </div>
@@ -159,6 +160,7 @@ export default function Home() {
                     <div>
                         <p>Em desenvolvimento....</p>
                     </div>
+
                 </div>
             </main>
         </>

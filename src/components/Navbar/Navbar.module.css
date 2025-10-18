@@ -33,6 +33,23 @@ header {
             align-items: center;
             gap: 16px;
 
+            a {
+                text-decoration: none;
+                color: white;
+            }
+
+            a:hover {
+                color: rgb(204, 204, 204);
+            }
+
+
+        }
+
+        .flex {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
             .btnLogout {
                 background-color: white;
                 border: none;
@@ -45,18 +62,98 @@ header {
                 background-color: rgb(210, 210, 210);
             }
 
-            a {
-                text-decoration: none;
-                color: white;
+            img:hover {
+                transform: scale(1.1);
+                cursor: pointer;
             }
 
-            a:hover {
-                color: rgb(204, 204, 204);
-            }
         }
 
     }
 
+}
+
+.containerModal {
+    position: fixed;
+    /* fixa o container sobre toda a tela */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* fundo escurecido */
+    display: flex;
+    justify-content: center;
+    /* centraliza horizontalmente */
+    align-items: center;
+    /* centraliza verticalmente */
+    z-index: 9999;
+
+    /* garante que fique sobre outros elementos */
+    .card {
+        background-color: #fff;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        width: 600px;
+        height: 700px;
+        text-align: center;
+        animation: fadeIn 0.3s ease-in-out;
+
+        .headerModal {
+            display: flex;
+            justify-content: space-between;
+
+            img {
+                cursor: pointer;
+            }
+
+        }
+
+        .main {
+
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            justify-content: space-around;
+            height: 30%;
+
+            .formControl{
+                display: flex;
+                gap: 10px;
+
+                button{
+                    background-color: #E46307;
+                    color: white;
+                    border: none;
+                    padding: 2px 15px;
+                    border-radius: 2px;
+                    cursor: pointer;
+                }
+
+                button:hover{
+                    background-color: #f87b21;
+                }
+
+            }
+
+        }
+
+    }
+}
+
+
+/* Animação suave de entrada */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 

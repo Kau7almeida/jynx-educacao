@@ -24,7 +24,7 @@ export default function Actions() {
 
     const capturaUser = () => {
 
-        if(!user){
+        if (!user) {
             navigate('/')
         }
 
@@ -59,9 +59,47 @@ export default function Actions() {
         getAllCheckin();
     }, [alunos])
 
+    const exportExcel = () => {
+        // Cabeçalho
+        const linhas = [['Turma', 'Nome']];
+
+        // Dados a partir do estado (sem DOM)
+        for (const a of alunos ?? []) {
+            linhas.push([a?.turma ?? '', a?.name ?? '']);
+        }
+
+        if (linhas.length === 1) {
+            console.warn('Nenhum dado para exportar.');
+            return;
+        }
+
+        // Escape básico para CSV e BOM para Excel PT-BR
+        const csvEscape = (v) => {
+            const s = String(v ?? '');
+            return /[;"\n\r]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+        };
+
+        const csv = '\uFEFF' + linhas.map(l => l.map(csvEscape).join(';')).join('\n');
+
+        const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+
+        // Nome do arquivo com data/hora
+        const d = new Date();
+        const pad = (n) => String(n).padStart(2, '0');
+        const ts = `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}_${pad(d.getHours())}-${pad(d.getMinutes())}`;
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `presencas_${ts}.csv`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    };
+
     return (
         <>
-        
+
             <Navbar />
 
             <main>
@@ -89,7 +127,7 @@ export default function Actions() {
                             <Link to={'/checkin'} target='_blank'>Acesse a chamada da Universidade JYNX</Link>
 
                             <div className={Styles.buttons}>
-                                {/* <button id="btnExport">Exportar Presenças</button> */}
+                                <button id="btnExport" onClick={exportExcel}>Exportar Presenças</button>
                                 <button className={Styles.clear} onClick={limparCheckin}>Limpar chamada</button>
                             </div>
                         </div>
@@ -106,7 +144,7 @@ export default function Actions() {
                                     <p></p>
                                 </div>
 
-                                <div id={Styles.tbody}>
+                                <div id='tbody' className={Styles.tbody}>
                                     {alunos.length === 0 ? (<p>Nenhum aluno presente</p>) : (
                                         alunos.map(aluno => {
                                             return (
