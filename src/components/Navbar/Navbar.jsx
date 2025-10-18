@@ -40,9 +40,9 @@ export default function Navbar() {
 
                     </nav>
                     <div className={Styles.flex}>
-                        <div onClick={abrirModal}>
+                        {/* <div onClick={abrirModal}>
                             <img width="30" height="30" src="https://img.icons8.com/material-sharp/24/FFFFFF/user.png" alt="user" />
-                        </div>
+                        </div> */}
                         <button className={Styles.btnLogout} onClick={logout}>Sair</button>
                     </div>
                 </div>
