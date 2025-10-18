@@ -43,6 +43,45 @@ main {
             display: flex;
             justify-content: space-between;
 
+            .qrcodeSelect {
+                background-color: #ffffff;
+                height: 40%;
+                width: 49%;
+                border: solid 1px #CCCCCC;
+                border-radius: 15px;
+                box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+
+                select {
+                    height: 40px;
+                    padding: 7px;
+                    border-radius: 5px;
+                }
+
+                button {
+                        border: none;
+                        background-color: #E46307;
+                        padding: 7px;
+                        width: 30%;
+                        border-radius: 5px;
+                        height: 30px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 10px;
+                        color: white;
+                        cursor: pointer;
+                    }
+
+                    button:hover {
+                        background-color: #e6721f;
+                    }
+            }
+
             .qrcode {
                 background-color: #ffffff;
                 height: 100%;

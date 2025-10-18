@@ -30,19 +30,19 @@ export default function Checkin() {
 
     const realizarCheckin = async () => {
 
-        let turma = document.querySelector('#txt_unidades').value
+        // let turma = document.querySelector('#txt_unidades').value
         let aluno = document.querySelector('#txt_aluno').value
 
-        if (!turma || !aluno) {
-            alert('Preencha todos os campos')
-            return
-        }
+        // if (!turma || !aluno) {
+        //     alert('Preencha todos os campos')
+        //     return
+        // }
 
         let endpoint = 'https://universidade-jynx-back.onrender.com/call/post'
 
         let newRegister = {
-            name: aluno,
-            classe_id: turma
+            name: aluno
+            // classe_id: turma
         }
 
         let jaRealizados = alunos.filter(item => item.name.toLowerCase() == newRegister.name.toLowerCase());
@@ -88,7 +88,7 @@ export default function Checkin() {
                                     <h2>Registrar Presença</h2>
                                 </div>
 
-                                <div className={Styles.form_control}>
+                                {/* <div className={Styles.form_control}>
                                     <div className={Styles.flex_label}>
                                         <img width="20" height="20" src="https://img.icons8.com/parakeet-line/20/group.png"
                                             alt="group" />
@@ -100,7 +100,7 @@ export default function Checkin() {
                                             <option key={turma.classe_id} value={turma.classe_id}>{turma.name}</option>
                                         ))}
                                     </select>
-                                </div>
+                                </div> */}
 
                                 <div className={Styles.form_control}>
                                     <div className={Styles.flex_label}>

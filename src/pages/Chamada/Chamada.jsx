@@ -13,6 +13,9 @@ import qrcode from '../../assets/download.png'
 
 export default function Actions() {
 
+    const [turmas, setTurmas] = useState([])
+    const [turmaSelecionada, setTurmaSelecionada] = useState('')
+
     const [alunos, setAlunos] = useState([]);
 
     const [userLogado, setUserLogado] = useState({})
@@ -50,9 +53,22 @@ export default function Actions() {
         getAllCheckin();
     }
 
+    const buscarTurmas = async () => {
+        let endpoint = 'https://universidade-jynx-back.onrender.com/classe/getAllClasses'
+        let resp = await axios.get(endpoint)
+        let data = resp.data
+        setTurmas(data)
+    }
+
+    const selecionarTurma = () => {
+        let value = document.querySelector('#slc_turma').value
+        setTurmaSelecionada(value)
+    }
+
     useEffect(() => {
         capturaUser()
         getAllCheckin();
+        buscarTurmas()
     }, [])
 
     useEffect(() => {
@@ -114,23 +130,46 @@ export default function Actions() {
 
                     <div className={Styles.content}>
 
-                        <div className={Styles.qrcode}>
+                        {
 
-                            <strong>QR Code da Chamada</strong>
+                            turmaSelecionada == '' ?
+                                <div className={Styles.qrcodeSelect}>
 
-                            <div className={Styles.qr}>
-                                <img src={qrcode} alt="" />
-                            </div>
+                                    <p>Selecione a Turma</p>
+                                    <select name="slc_turma" id="slc_turma">
+                                        <option value="">Selecione uma turma</option>
+                                        {turmas.map(turma => (
+                                            <option key={turma.classe_id} value={turma.name}>{turma.name}</option>
+                                        ))}
+                                    </select>
 
-                            <p>Escaneie o QR Code ou acesse:</p>
+                                    <button onClick={selecionarTurma}>Iniciar Chamada</button>
 
-                            <Link to={'/checkin'} target='_blank'>Acesse a chamada da Universidade JYNX</Link>
+                                </div> : ''
 
-                            <div className={Styles.buttons}>
-                                <button id="btnExport" onClick={exportExcel}>Exportar Presenças</button>
-                                <button className={Styles.clear} onClick={limparCheckin}>Limpar chamada</button>
-                            </div>
-                        </div>
+                        }
+
+
+                        {
+                            turmaSelecionada == '' ? '' :
+                                <div className={Styles.qrcode}>
+
+                                    <strong>QR Code da Chamada</strong>
+
+                                    <div className={Styles.qr}>
+                                        <img src={qrcode} alt="" />
+                                    </div>
+
+                                    {/* <p>Escaneie o QR Code ou acesse:</p> */}
+                                    {/* <Link to={'/checkin'} target='_blank'>Acesse a chamada da Universidade JYNX</Link> */}
+
+                                    <div className={Styles.buttons}>
+                                        <button id="btnExport" onClick={exportExcel}>Exportar Presenças</button>
+                                        <button className={Styles.clear} onClick={limparCheckin}>Limpar chamada</button>
+                                    </div>
+                                </div>
+                        }
+
 
                         <div className={Styles.content_chamada}>
 
@@ -149,7 +188,7 @@ export default function Actions() {
                                         alunos.map(aluno => {
                                             return (
                                                 <div className={Styles.tr} key={aluno.id}>
-                                                    <p>{aluno.turma}</p>
+                                                    <p>{turmaSelecionada}</p>
                                                     <p>{aluno.name}</p>
                                                     <svg id={aluno.id} onClick={deleteCheckin} xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20"
                                                         viewBox="0,0,256,256">
