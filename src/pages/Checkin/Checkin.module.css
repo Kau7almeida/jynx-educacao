@@ -96,11 +96,11 @@ main {
                     flex-direction: column;
                     gap: 10px;
 
-                    select {
+                    /* select {
                         height: 40px;
                         padding: 7px;
                         border-radius: 5px;
-                    }
+                    } */
 
                     input {
                         height: 40px;
@@ -142,9 +142,11 @@ main {
     main .container .content .box .form_control {
         padding: 0 12px;
     }
+
 }
 
 @media (max-width: 680px) {
+
     main {
         margin-top: 20px;
     }

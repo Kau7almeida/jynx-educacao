@@ -221,6 +221,11 @@ main {
                             }
                         }
 
+                        .tr:hover{
+                            background-color: #CCCCCC;
+                            transition: all 0.2s ease-in-out;
+                        }
+
                     }
 
                 }
